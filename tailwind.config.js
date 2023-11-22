@@ -5,6 +5,12 @@ export default {
 		extend: {
 			colors: {
 				customBlue: '#173371',
+				customGreen: '#38D4AD',
+				customGradient:
+					'linear-gradient(282deg, #DDFFF6 6.8%, #DEFFF5 21.61%, #FFF9F2 71.37%, #FFF 106.66%)',
+			},
+			fontFamily: {
+				inter: ['Inter'],
 			},
 		},
 	},
