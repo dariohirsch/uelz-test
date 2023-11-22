@@ -1,10 +1,12 @@
+import { Routes, Route } from 'react-router-dom'
+import { Home } from './components/Home'
 import './index.css'
 
 const App = () => {
 	return (
-		<div className='w-screen h-screen bg-customBlue'>
-			<h3>Uelz test</h3>
-		</div>
+		<Routes>
+			<Route path='/' element={<Home />} />
+		</Routes>
 	)
 }
 
