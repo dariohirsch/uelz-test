@@ -29,6 +29,15 @@ export const Board = () => {
 		}
 	}, [selected])
 
+	useEffect(() => {
+		if (guessed.length === IMAGES.length) {
+			setTimeout(() => {
+				alert('You win!')
+				location.reload()
+			}, 1000)
+		}
+	}, [guessed])
+
 	return (
 		<div className='bg-customBackground w-screen h-screen flex items-center justify-center '>
 			<div className=' grid grid-cols-6 gap-10'>
