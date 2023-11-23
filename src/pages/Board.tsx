@@ -9,7 +9,7 @@ import card7 from '../assets/Card7.png'
 import card8 from '../assets/Card8.png'
 import card9 from '../assets/Card9.png'
 import number from '../assets/number1.png'
-import { CustomModal } from '../components/Modal'
+import { CustomModal } from '../components/Modal/Modal'
 
 const IMAGES = [card1, card2, card3, card4, card5, card6, card7, card8, card9]
 	.flatMap((image) => [`a-${image}`, `b-${image}`])
@@ -19,6 +19,12 @@ export const Board = () => {
 	const [selected, setSelected] = useState<string[]>([])
 	const [guessed, setGuessed] = useState<string[]>([])
 	const [isGameWon, setIsGameWon] = useState<boolean>(false)
+	const [startTime, setStartTime] = useState<number>(0)
+	const [endTime, setEndTime] = useState<number>(0)
+
+	useEffect(() => {
+		setStartTime(Date.now())
+	}, [])
 
 	useEffect(() => {
 		if (selected.length === 2) {
@@ -33,6 +39,7 @@ export const Board = () => {
 
 	useEffect(() => {
 		if (guessed.length === IMAGES.length) {
+			setEndTime(Date.now())
 			setTimeout(() => {
 				setIsGameWon(true)
 			}, 1000)
@@ -73,6 +80,8 @@ export const Board = () => {
 				handleResetGame={handleResetGame}
 				isGameWon={isGameWon}
 				setIsGameWon={setIsGameWon}
+				startTime={startTime}
+				endTime={endTime}
 			/>
 		</div>
 	)
