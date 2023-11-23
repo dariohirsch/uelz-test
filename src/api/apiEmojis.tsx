@@ -8,7 +8,7 @@ import card7 from '../assets/Card7.png'
 import card8 from '../assets/Card8.png'
 import card9 from '../assets/Card9.png'
 
-const fetchImages = () => {
+const fetchEmojis = () => {
 	const IMAGES = [card1, card2, card3, card4, card5, card6, card7, card8, card9]
 		.flatMap((image) => [`a-${image}`, `b-${image}`])
 		.sort(() => Math.random() - 0.5)
@@ -16,4 +16,4 @@ const fetchImages = () => {
 	return IMAGES
 }
 
-export default fetchImages
+export default fetchEmojis

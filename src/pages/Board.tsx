@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import number from '../assets/number1.png'
 import { CustomModal } from '../components/Modal/Modal'
 import { useQuery } from 'react-query'
-import fetchImages from '../api/api'
+import fetchEmojis from '../api/apiEmojis'
+import Card from '../components/Card'
+import fetchNumbers from '../api/apiNumbers'
 
 export const Board = () => {
-	const { data: IMAGES, isLoading } = useQuery('images', fetchImages)
+	const { data: IMAGES, isLoading } = useQuery('images', fetchEmojis)
+	const { data: NUMBERS } = useQuery('numbers', fetchNumbers)
 	const [selected, setSelected] = useState<string[]>([])
 	const [guessed, setGuessed] = useState<string[]>([])
 	const [isGameWon, setIsGameWon] = useState<boolean>(false)
@@ -32,7 +34,7 @@ export const Board = () => {
 			setEndTime(Date.now())
 			setTimeout(() => {
 				setIsGameWon(true)
-			}, 1000)
+			}, 500)
 		}
 	}, [guessed])
 
@@ -47,26 +49,22 @@ export const Board = () => {
 		<div className='bg-customBackground w-screen h-screen flex items-center justify-center '>
 			<div className=' grid grid-cols-6 gap-10'>
 				{IMAGES &&
-					IMAGES.map((image) => {
+					IMAGES.map((image, index) => {
 						const pieces = image.split('-')
 						const url = pieces[1]
 						const isFlipped =
 							selected.includes(image) || guessed.includes(image)
 
 						return (
-							<div
-								className={`cursor-pointer ${isFlipped ? 'flip' : ''}`}
+							<Card
 								key={image}
-								onClick={() =>
-									selected.length < 2 &&
-									setSelected((selected) => selected.concat(image))
-								}>
-								{isFlipped ? (
-									<img src={url} alt='card' className='w-40' />
-								) : (
-									<img src={number} alt='card' className='w-40' />
-								)}
-							</div>
+								isFlipped={isFlipped}
+								url={url}
+								image={image}
+								selected={selected}
+								setSelected={setSelected}
+								numberImage={NUMBERS && NUMBERS[index]}
+							/>
 						)
 					})}
 			</div>
