@@ -9,6 +9,7 @@ import card7 from '../assets/Card7.png'
 import card8 from '../assets/Card8.png'
 import card9 from '../assets/Card9.png'
 import number from '../assets/number1.png'
+import { CustomModal } from '../components/Modal'
 
 const IMAGES = [card1, card2, card3, card4, card5, card6, card7, card8, card9]
 	.flatMap((image) => [`a-${image}`, `b-${image}`])
@@ -17,6 +18,7 @@ const IMAGES = [card1, card2, card3, card4, card5, card6, card7, card8, card9]
 export const Board = () => {
 	const [selected, setSelected] = useState<string[]>([])
 	const [guessed, setGuessed] = useState<string[]>([])
+	const [isGameWon, setIsGameWon] = useState<boolean>(false)
 
 	useEffect(() => {
 		if (selected.length === 2) {
@@ -32,11 +34,15 @@ export const Board = () => {
 	useEffect(() => {
 		if (guessed.length === IMAGES.length) {
 			setTimeout(() => {
-				alert('You win!')
-				location.reload()
+				setIsGameWon(true)
 			}, 1000)
 		}
 	}, [guessed])
+
+	const handleResetGame = () => {
+		setIsGameWon(false)
+		location.reload()
+	}
 
 	return (
 		<div className='bg-customBackground w-screen h-screen flex items-center justify-center '>
@@ -63,6 +69,11 @@ export const Board = () => {
 					)
 				})}
 			</div>
+			<CustomModal
+				handleResetGame={handleResetGame}
+				isGameWon={isGameWon}
+				setIsGameWon={setIsGameWon}
+			/>
 		</div>
 	)
 }
