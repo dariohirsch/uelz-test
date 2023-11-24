@@ -6,7 +6,7 @@ type UelzButtonProps = {
 export const UelzButton = ({ onClick, text }: UelzButtonProps) => {
 	return (
 		<button
-			className='bg-customGreen text-xl text-white py-3 px-6 rounded-md font-inter'
+			className='bg-customGreen text-xl text-customWhite py-3 px-6 rounded-md font-inter'
 			onClick={onClick}>
 			{text}
 		</button>
