@@ -17,7 +17,7 @@ const Card = ({
 }: CardProps) => {
 	return (
 		<div
-			className='cursor-pointer'
+			className={!isFlipped ? 'cursor-pointer' : ''}
 			onClick={() =>
 				selected.length < 2 &&
 				!isFlipped &&
