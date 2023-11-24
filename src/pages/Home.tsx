@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import TitleLogo from '../assets/Logo.png'
+import TitleLogo from '../assets/main-logo.png'
 import { UelzButton } from '../components/UelzButton'
 
 export const Home = () => {
