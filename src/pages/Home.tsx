@@ -6,7 +6,7 @@ export const Home = () => {
 	const navigate = useNavigate()
 
 	const handleClick = () => {
-		navigate('/board')
+		navigate('/game')
 	}
 
 	return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { CustomModal } from '../components/Modal/Modal'
+import { CustomModal } from './Modal/Modal'
 import { useQuery } from 'react-query'
 import fetchEmojis from '../api/apiEmojis'
-import Card from '../components/Card'
+import Card from './Card'
 import fetchNumbers from '../api/apiNumbers'
 
 export const Board = () => {
