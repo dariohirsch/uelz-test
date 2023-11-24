@@ -20,6 +20,7 @@ const Card = ({
 			className='cursor-pointer'
 			onClick={() =>
 				selected.length < 2 &&
+				!isFlipped &&
 				setSelected((prevSelected) => [...prevSelected, image])
 			}>
 			{isFlipped ? (
