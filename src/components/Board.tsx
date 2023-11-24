@@ -32,9 +32,7 @@ export const Board = () => {
 	useEffect(() => {
 		if (guessed.length === IMAGES?.length) {
 			setEndTime(Date.now())
-			setTimeout(() => {
-				setIsGameWon(true)
-			}, 200)
+			setIsGameWon(true)
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [guessed])
