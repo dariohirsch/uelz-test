@@ -24,9 +24,9 @@ const Card = ({
 				setSelected((prevSelected) => [...prevSelected, image])
 			}>
 			{isFlipped ? (
-				<img src={url} alt='card' className='w-38' />
+				<img src={url} alt='card' className='w-36' />
 			) : (
-				<img src={numberImage} alt='card' className='w-38' />
+				<img src={numberImage} alt='card' className='w-36' />
 			)}
 		</div>
 	)
