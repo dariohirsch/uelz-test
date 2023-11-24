@@ -30,12 +30,13 @@ export const Board = () => {
 	}, [selected])
 
 	useEffect(() => {
-		if (IMAGES && guessed.length === IMAGES.length) {
+		if (guessed.length === IMAGES?.length) {
 			setEndTime(Date.now())
 			setTimeout(() => {
 				setIsGameWon(true)
-			}, 500)
+			}, 200)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [guessed])
 
 	const handleResetGame = () => {
@@ -48,25 +49,23 @@ export const Board = () => {
 	return (
 		<div className='bg-customBackground w-screen h-screen flex items-center justify-center '>
 			<div className=' grid grid-cols-6 gap-10'>
-				{IMAGES &&
-					IMAGES.map((image, index) => {
-						const pieces = image.split('-')
-						const url = pieces[1]
-						const isFlipped =
-							selected.includes(image) || guessed.includes(image)
+				{IMAGES?.map((image, index) => {
+					const pieces = image.split('-')
+					const url = pieces[1]
+					const isFlipped = selected.includes(image) || guessed.includes(image)
 
-						return (
-							<Card
-								key={image}
-								isFlipped={isFlipped}
-								url={url}
-								image={image}
-								selected={selected}
-								setSelected={setSelected}
-								numberImage={NUMBERS && NUMBERS[index]}
-							/>
-						)
-					})}
+					return (
+						<Card
+							key={image}
+							isFlipped={isFlipped}
+							url={url}
+							image={image}
+							selected={selected}
+							setSelected={setSelected}
+							numberImage={NUMBERS && NUMBERS[index]}
+						/>
+					)
+				})}
 			</div>
 			<CustomModal
 				handleResetGame={handleResetGame}
