@@ -25,7 +25,7 @@ export const Board = () => {
 			}
 			setTimeout(() => {
 				setSelected([])
-			}, 1000)
+			}, 800)
 		}
 	}, [selected])
 
