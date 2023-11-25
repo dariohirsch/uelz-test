@@ -17,16 +17,16 @@ const Card = ({
 }: CardProps) => {
 	return (
 		<div
-			className='cursor-pointer'
+			className={!isFlipped ? 'cursor-pointer' : ''}
 			onClick={() =>
 				selected.length < 2 &&
 				!isFlipped &&
 				setSelected((prevSelected) => [...prevSelected, image])
 			}>
 			{isFlipped ? (
-				<img src={url} alt='card' className='w-36' />
+				<img src={url} alt='front-card' className='w-36' />
 			) : (
-				<img src={numberImage} alt='card' className='w-36' />
+				<img src={numberImage} alt='back-card' className='w-36' />
 			)}
 		</div>
 	)

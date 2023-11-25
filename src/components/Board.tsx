@@ -25,16 +25,14 @@ export const Board = () => {
 			}
 			setTimeout(() => {
 				setSelected([])
-			}, 1000)
+			}, 800)
 		}
 	}, [selected])
 
 	useEffect(() => {
 		if (guessed.length === IMAGES?.length) {
 			setEndTime(Date.now())
-			setTimeout(() => {
-				setIsGameWon(true)
-			}, 200)
+			setIsGameWon(true)
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [guessed])
