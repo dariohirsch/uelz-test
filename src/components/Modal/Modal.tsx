@@ -33,8 +33,8 @@ export const CustomModal = ({
 					backgroundColor: 'rgba(0, 0, 0, 0.5)',
 				},
 				content: {
-					width: '38%',
-					height: '42%',
+					width: '36%',
+					height: '40%',
 					border: 'none',
 					outline: 'none',
 				},
