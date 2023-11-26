@@ -3,3 +3,17 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import url('https://rsms.me/inter/inter.css');
+
+@layer utilities {
+	.custom-box-shadow {
+		box-shadow: 0px 2px 8px 0px #a9dacc;
+	}
+	.custom-gradient-background {
+		background: linear-gradient(
+			37deg,
+			#1c80bd 16.19%,
+			#38d4ad 72.63%,
+			#7eecd0 127.87%
+		);
+	}
+}
