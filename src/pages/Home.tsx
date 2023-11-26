@@ -11,7 +11,7 @@ export const Home = () => {
 
 	return (
 		<div className='w-screen h-screen flex flex-col items-center justify-center bg-customBlue '>
-			<img src={titleLogo} alt='logo' className='w-1/4' />
+			<img src={titleLogo} alt='logo' className='w-96' />
 			<h3 className='text-3xl text-customWhite font-inter mb-12'>
 				Test de memoria
 			</h3>
