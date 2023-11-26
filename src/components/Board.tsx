@@ -3,11 +3,9 @@ import { CustomModal } from './Modal/Modal'
 import { useQuery } from 'react-query'
 import fetchEmojis from '../api/apiEmojis'
 import Card from './Card'
-import fetchNumbers from '../api/apiNumbers'
 
 export const Board = () => {
-	const { data: IMAGES, isLoading } = useQuery('images', fetchEmojis)
-	const { data: NUMBERS } = useQuery('numbers', fetchNumbers)
+	const { data: EMOJIS, isLoading, error } = useQuery('emojis', fetchEmojis)
 	const [selected, setSelected] = useState<string[]>([])
 	const [guessed, setGuessed] = useState<string[]>([])
 	const [isGameWon, setIsGameWon] = useState<boolean>(false)
@@ -30,7 +28,7 @@ export const Board = () => {
 	}, [selected])
 
 	useEffect(() => {
-		if (guessed.length === IMAGES?.length) {
+		if (guessed.length === EMOJIS?.length) {
 			setEndTime(Date.now())
 			setIsGameWon(true)
 		}
@@ -44,23 +42,25 @@ export const Board = () => {
 
 	if (isLoading) return <div>Loading...</div>
 
+	if (error) return <div>Error getting images...</div>
+
 	return (
 		<div className='bg-customBackground w-screen h-screen flex items-center justify-center '>
 			<div className=' grid grid-cols-6 gap-10'>
-				{IMAGES?.map((image, index) => {
+				{EMOJIS?.map((image, index) => {
 					const pieces = image.split('-')
-					const url = pieces[1]
+					const emoji = pieces[1]
 					const isFlipped = selected.includes(image) || guessed.includes(image)
 
 					return (
 						<Card
 							key={image}
 							isFlipped={isFlipped}
-							url={url}
+							emoji={emoji}
 							image={image}
 							selected={selected}
 							setSelected={setSelected}
-							numberImage={NUMBERS && NUMBERS[index]}
+							numberImage={index + 1}
 						/>
 					)
 				})}
